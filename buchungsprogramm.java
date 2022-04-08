@@ -21,6 +21,8 @@ public class buchungsprogramm extends JFrame implements ActionListener {
 	public static final DecimalFormat df = new DecimalFormat("0.00");
 	
 	public int[][] Buchungen = new int[10][3];
+	
+	//Julius stinkt hart nach Maggi
 		
 	private JPanel contentPane;
 	private JTextField txtNumberOne;
