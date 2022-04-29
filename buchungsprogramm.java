@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.DropMode;
 
 //Julius stinkt hart nach Maggi
+//test
 
 @SuppressWarnings("serial")
 public class buchungsprogramm extends JFrame implements ActionListener {
