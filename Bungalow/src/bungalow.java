@@ -183,6 +183,5 @@ public class bungalow extends JFrame implements ActionListener {
 			txtNumberSeven.setText("Endemonat: " + Buchungen[Integer.parseInt(txtNumberFive.getText())][1]);
 			txtNumberEight.setText("Anzahl Personen: " + Buchungen[Integer.parseInt(txtNumberFive.getText())][2]);
 		}
-
 	}
 }
