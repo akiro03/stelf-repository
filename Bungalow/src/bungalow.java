@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-//Test
+
 @SuppressWarnings("serial")
 public class bungalow extends JFrame implements ActionListener {
  
