@@ -109,7 +109,7 @@ public class bungalow extends JFrame implements ActionListener {
 		btnBuchen.setBounds(110, 190, 110, 25);
 		contentPane.add(btnBuchen);
 
-		lblWieVielePersonen = new JLabel("Wie viele Personen");
+		lblWieVielePersonen = new JLabel("Wie viele Personen:");
 		lblWieVielePersonen.setForeground(Color.WHITE);
 		lblWieVielePersonen.setBounds(27, 139, 180, 25);
 		contentPane.add(lblWieVielePersonen);
