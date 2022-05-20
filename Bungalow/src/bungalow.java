@@ -3,7 +3,9 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import java.util.Random;
 
+import javax.naming.ContextNotEmptyException;
 import javax.swing.DropMode;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,17 +13,20 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-
+//Test
 @SuppressWarnings("serial")
 public class bungalow extends JFrame implements ActionListener {
-
+ 
 	double zahl1 = 0, zahl2 = 0, ergebnis = 0;
-	
+ 
 	public static final DecimalFormat df = new DecimalFormat("0.00");
-
-	public int[][] Buchungen = new int[10][3];
-
+ 
+	public int[][] Buchungen = new int[10][4];
+	
+	Random random = new Random();
+ 
 	private JPanel contentPane;
 	private JTextField txtNumberOne;
 	private JLabel lblNumberOne;
@@ -37,7 +42,8 @@ public class bungalow extends JFrame implements ActionListener {
 	private JButton btnAnzeigen;
 	private JTextField txtNumberSeven;
 	private JTextField txtNumberEight;
-
+	private JTextField txtNumberNine;
+ 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -50,9 +56,9 @@ public class bungalow extends JFrame implements ActionListener {
 			}
 		});
 	}
-
+ 
 	public bungalow() {
-
+ 
 		setBackground(new Color(0, 0, 0));
 		setForeground(new Color(255, 255, 255));
 		setTitle("Buchung");
@@ -64,13 +70,13 @@ public class bungalow extends JFrame implements ActionListener {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
+ 
 		lblNumberOne = new JLabel("Nummer des Bungalows(1-10):");
 		lblNumberOne.setForeground(Color.WHITE);
 		lblNumberOne.setBackground(Color.WHITE);
 		lblNumberOne.setBounds(27, 35, 180, 23);
 		contentPane.add(lblNumberOne);
-
+ 
 		txtNumberOne = new JTextField();
 		txtNumberOne.setHorizontalAlignment(SwingConstants.CENTER);
 		txtNumberOne.setForeground(new Color(255, 255, 255));
@@ -78,12 +84,12 @@ public class bungalow extends JFrame implements ActionListener {
 		txtNumberOne.setBounds(220, 36, 118, 20);
 		contentPane.add(txtNumberOne);
 		txtNumberOne.setColumns(10);
-
+ 
 		lblNumberTwo = new JLabel("Start Kalenderwoche (1-51):");
 		lblNumberTwo.setForeground(Color.WHITE);
 		lblNumberTwo.setBounds(27, 69, 180, 25);
 		contentPane.add(lblNumberTwo);
-
+ 
 		txtNumberTwo = new JTextField();
 		txtNumberTwo.setHorizontalAlignment(SwingConstants.CENTER);
 		txtNumberTwo.setForeground(new Color(255, 255, 255));
@@ -108,12 +114,12 @@ public class bungalow extends JFrame implements ActionListener {
 		btnBuchen.setBackground(Color.CYAN);
 		btnBuchen.setBounds(110, 190, 110, 25);
 		contentPane.add(btnBuchen);
-
+ 
 		lblWieVielePersonen = new JLabel("WIe viele Personen");
 		lblWieVielePersonen.setForeground(Color.WHITE);
 		lblWieVielePersonen.setBounds(27, 139, 180, 25);
 		contentPane.add(lblWieVielePersonen);
-
+ 
 		txtNumberFour = new JTextField();
 		txtNumberFour.setHorizontalAlignment(SwingConstants.CENTER);
 		txtNumberFour.setForeground(Color.WHITE);
@@ -121,13 +127,13 @@ public class bungalow extends JFrame implements ActionListener {
 		txtNumberFour.setBackground(Color.DARK_GRAY);
 		txtNumberFour.setBounds(220, 142, 118, 20);
 		contentPane.add(txtNumberFour);
-
+ 
 		lblWelcherBungalowSoll = new JLabel("Welcher Bungalow soll angezeigt werden");
 		lblWelcherBungalowSoll.setForeground(Color.WHITE);
 		lblWelcherBungalowSoll.setBackground(Color.WHITE);
 		lblWelcherBungalowSoll.setBounds(350, 20, 200, 30);
 		contentPane.add(lblWelcherBungalowSoll);
-
+ 
 		txtNumberFive = new JTextField();
 		txtNumberFive.setHorizontalAlignment(SwingConstants.CENTER);
 		txtNumberFive.setForeground(Color.WHITE);
@@ -135,7 +141,7 @@ public class bungalow extends JFrame implements ActionListener {
 		txtNumberFive.setBackground(Color.DARK_GRAY);
 		txtNumberFive.setBounds(411, 72, 118, 20);
 		contentPane.add(txtNumberFive);
-
+ 
 		txtNumberSix = new JTextField();
 		txtNumberSix.setDropMode(DropMode.INSERT);
 		txtNumberSix.setEditable(false);
@@ -145,14 +151,14 @@ public class bungalow extends JFrame implements ActionListener {
 		txtNumberSix.setBackground(Color.LIGHT_GRAY);
 		txtNumberSix.setBounds(411, 142, 118, 20);
 		contentPane.add(txtNumberSix);
-
+ 
 		btnAnzeigen = new JButton("Anzeigen");
 		btnAnzeigen.setForeground(Color.BLACK);
 		btnAnzeigen.setBackground(Color.CYAN);
 		btnAnzeigen.setBounds(411, 106, 118, 25);
 		contentPane.add(btnAnzeigen);
 		btnAnzeigen.addActionListener(this);
-
+ 
 		txtNumberSeven = new JTextField();
 		txtNumberSeven.setHorizontalAlignment(SwingConstants.CENTER);
 		txtNumberSeven.setForeground(Color.BLACK);
@@ -160,7 +166,7 @@ public class bungalow extends JFrame implements ActionListener {
 		txtNumberSeven.setBackground(Color.LIGHT_GRAY);
 		txtNumberSeven.setBounds(411, 172, 118, 20);
 		contentPane.add(txtNumberSeven);
-
+ 
 		txtNumberEight = new JTextField();
 		txtNumberEight.setHorizontalAlignment(SwingConstants.CENTER);
 		txtNumberEight.setForeground(Color.BLACK);
@@ -168,19 +174,30 @@ public class bungalow extends JFrame implements ActionListener {
 		txtNumberEight.setBackground(Color.LIGHT_GRAY);
 		txtNumberEight.setBounds(411, 202, 118, 20);
 		contentPane.add(txtNumberEight);
+		
+		txtNumberNine = new JTextField();
+		txtNumberNine.setHorizontalAlignment(SwingConstants.CENTER);
+		txtNumberNine.setForeground(Color.BLACK);
+		txtNumberNine.setColumns(10);
+		txtNumberNine.setBackground(Color.LIGHT_GRAY);
+		txtNumberNine.setBounds(411, 232, 118, 20);
+		contentPane.add(txtNumberNine);
 	}
-
+ 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == btnBuchen) {
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][0] = Integer.parseInt(txtNumberTwo.getText());
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][1] = Integer.parseInt(txtNumberThree.getText());
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][2] = Integer.parseInt(txtNumberFour.getText());
+			Buchungen[Integer.parseInt(txtNumberOne.getText())][3] = random.nextInt(9999);
 		}
+ 
 		if (e.getSource() == btnAnzeigen) {
 			txtNumberSix.setText("Anfangsmonat: " + Buchungen[Integer.parseInt(txtNumberFive.getText())][0]);
 			txtNumberSeven.setText("Endemonat: " + Buchungen[Integer.parseInt(txtNumberFive.getText())][1]);
 			txtNumberEight.setText("Anzahl Personen: " + Buchungen[Integer.parseInt(txtNumberFive.getText())][2]);
+			txtNumberNine.setText("Kundennummer: " + Buchungen[Integer.parseInt(txtNumberFive.getText())][3]);
 		}
 	}
 }
