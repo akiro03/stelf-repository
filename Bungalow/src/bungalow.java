@@ -24,6 +24,8 @@ public class bungalow extends JFrame implements ActionListener {
 	public int[][] Buchungen = new int[10][4];
 	
 	Random random = new Random();
+	
+	public int[] bungPersonen = new int[10];
  
 	private JPanel contentPane;
 	private JTextField txtNumberOne;
@@ -55,7 +57,17 @@ public class bungalow extends JFrame implements ActionListener {
 		});
 	}
  
+	
 	public bungalow() {
+		
+		for (int i = 0; i <= 10; i++) {
+			int j = 0;
+			bungPersonen[j] = random.nextInt(10)+1;
+			System.out.println(i + " " +  bungPersonen[j]);
+			j++;
+		}
+		
+		
  
 		setBackground(new Color(0, 0, 0));
 		setForeground(new Color(255, 255, 255));
@@ -182,6 +194,8 @@ public class bungalow extends JFrame implements ActionListener {
 		txtNumberNine.setBackground(Color.LIGHT_GRAY);
 		txtNumberNine.setBounds(411, 232, 118, 20);
 		contentPane.add(txtNumberNine);
+		
+		
 	}
  
 	@Override
