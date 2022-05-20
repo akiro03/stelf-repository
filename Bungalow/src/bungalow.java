@@ -17,6 +17,7 @@ import javax.swing.border.EmptyBorder;
 public class bungalow extends JFrame implements ActionListener {
 
 	double zahl1 = 0, zahl2 = 0, ergebnis = 0;
+	
 	public static final DecimalFormat df = new DecimalFormat("0.00");
 
 	public int[][] Buchungen = new int[10][3];
