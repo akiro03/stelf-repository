@@ -1,3 +1,4 @@
+// Imports
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -12,6 +13,8 @@ import javax.swing.border.EmptyBorder;
 @SuppressWarnings("serial")
 public class ListeMaxPersonen extends JFrame {
 
+	
+	// Initialisieren
 	private JFrame frmListe;
 	private JTextField txtField1;
 	private JTextField txtField2;
@@ -41,7 +44,11 @@ public class ListeMaxPersonen extends JFrame {
 		});
 	}
 
+	
+	// GUI erstellen
 	 ListeMaxPersonen() {
+		 
+		 //Verbindung zu bungalow.java herstellen
 		bungalowPersonen();
 		frmListe = new JFrame();
 		frmListe.setTitle("Liste");
@@ -58,6 +65,8 @@ public class ListeMaxPersonen extends JFrame {
 		contentPane.setBackground(new Color(51, 51, 51));
 		frmListe.getContentPane().add(contentPane, BorderLayout.CENTER);
 
+		
+		// Labels erstellen
 		JLabel lblBungalow_1 = new JLabel("Bungalow 1:");
 		lblBungalow_1.setForeground(Color.WHITE);
 		lblBungalow_1.setBackground(Color.WHITE);
@@ -118,6 +127,8 @@ public class ListeMaxPersonen extends JFrame {
 		lblBungalow_10.setBounds(27, 341, 76, 23);
 		contentPane.add(lblBungalow_10);
 
+		
+		// Textfelder erstellen
 		txtField1 = new JTextField("Max. " + bungPersonen[0] + " Personen");
 		txtField1.setEditable(false);
 		txtField1.setBounds(113, 38, 154, 20);
@@ -179,6 +190,8 @@ public class ListeMaxPersonen extends JFrame {
 		contentPane.add(txtField10);
 	}
 
+	 
+	 // Zufallszahl für Anzahl der Personen je Bungalow
 	public void bungalowPersonen() {
 		for (int i = 0; i < 10; i++) {
 			bungPersonen[i] = random.nextInt(6) + 2;
