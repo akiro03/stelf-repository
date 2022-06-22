@@ -267,7 +267,7 @@ public class bungalow extends JFrame implements ActionListener {
 				txtNumberSix.setText("Fehler!");
 				txtNumberSeven.setText("Endwoche");
 				txtNumberEight.setText("ist nicht im");
-				txtNumberNine.setText("mÃ¶glichen Rahmen");
+				txtNumberNine.setText("möglichen Rahmen");
 				btnAnzeigen.setVisible(false);
 
 			} else if (Integer.parseInt(txtNumberThree.getText()) < 1
@@ -275,7 +275,7 @@ public class bungalow extends JFrame implements ActionListener {
 				txtNumberSix.setText("Fehler!");
 				txtNumberSeven.setText("AnfangsWoche");
 				txtNumberEight.setText("ist nicht im");
-				txtNumberNine.setText("mÃ¶glichen Rahmen");
+				txtNumberNine.setText("möglichen Rahmen");
 				btnAnzeigen.setVisible(false);
 
 			} else if (Integer.parseInt(txtNumberTwo.getText()) >= Integer.parseInt(txtNumberThree.getText())) {
@@ -289,7 +289,7 @@ public class bungalow extends JFrame implements ActionListener {
 				txtNumberSix.setText("Fehler!");
 				txtNumberSeven.setText("Personenanzahl");
 				txtNumberEight.setText("wurde");
-				txtNumberEleven.setText("Ã¼berschritten");
+				txtNumberEleven.setText("Überschritten");
 				txtNumberNine.setText("!");
 				btnAnzeigen.setVisible(false);
 			} else {
