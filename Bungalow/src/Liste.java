@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
-public class Liste extends JFrame {
+public class ListeMaxPersonen extends JFrame {
 
 	private JFrame frmListe;
 	private JTextField txtField1;
@@ -32,7 +32,7 @@ public class Liste extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Liste window = new Liste();
+					ListeMaxPersonen window = new ListeMaxPersonen();
 					window.frmListe.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class Liste extends JFrame {
 		});
 	}
 
-	 Liste() {
+	 ListeMaxPersonen() {
 		bungalowPersonen();
 		frmListe = new JFrame();
 		frmListe.setTitle("Liste");
