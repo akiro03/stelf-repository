@@ -2,6 +2,10 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Frame;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.JFrame;
@@ -9,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
 
 @SuppressWarnings("serial")
 public class ListeMaxPersonen extends JFrame {
@@ -55,8 +60,8 @@ public class ListeMaxPersonen extends JFrame {
 		frmListe.setForeground(Color.WHITE);
 		frmListe.setBackground(Color.DARK_GRAY);
 		frmListe.setAlwaysOnTop(true);
-		frmListe.setBounds(100, 100, 338, 444);
-		frmListe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmListe.setBounds(100, 100, 327, 433);
+		frmListe.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
 		JPanel contentPane = new JPanel();
 		contentPane.setLayout(null);
@@ -195,7 +200,7 @@ public class ListeMaxPersonen extends JFrame {
 	public void bungalowPersonen() {
 		for (int i = 0; i < 10; i++) {
 			bungPersonen[i] = random.nextInt(6) + 2;
-			System.out.println(i + 1 + ". Bungalow: \t" + bungPersonen[i]);
 		}
 	}
+	
 }

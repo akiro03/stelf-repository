@@ -225,6 +225,7 @@ public class bungalow extends JFrame implements ActionListener {
 		btnBungalowListe.setBounds(350, 35, 110, 25);
 		contentPane.add(btnBungalowListe);
 		btnBungalowListe.setFocusable(false);
+		btnBungalowListe.addActionListener(this);
 
 	}
 
@@ -233,6 +234,11 @@ public class bungalow extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// Zusammenhang mit der Klasse "ListeMaxPersonen" erstellen
 		ListeMaxPersonen liste = new ListeMaxPersonen();
+		
+		if (e.getSource() == btnBungalowListe) { 
+			liste.main(null);
+		}
+		
 
 		// Keine Überbuchung
 		if (e.getSource() == btnBuchen || e.getSource() == btnAnzeigen) {
@@ -248,12 +254,16 @@ public class bungalow extends JFrame implements ActionListener {
 
 		// Werte speichern
 		if (e.getSource() == btnBuchen) {
+			try {
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][0] = Integer.parseInt(txtNumberTwo.getText());
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][1] = Integer.parseInt(txtNumberThree.getText());
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][2] = Integer.parseInt(txtNumberFour.getText());
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][3] = random.nextInt(9999);
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][4] = Integer.parseInt(txtNumberTen.getText());
-		}
+			} catch (Exception er) {
+				System.out.println("An Error happened");
+			}
+		} 
 
 		// Stonierung
 		if (e.getSource() == btnStornieren) {
