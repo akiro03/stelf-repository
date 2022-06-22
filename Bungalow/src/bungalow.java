@@ -14,7 +14,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-
 @SuppressWarnings("serial")
 public class bungalow extends JFrame implements ActionListener {
 
@@ -26,17 +25,15 @@ public class bungalow extends JFrame implements ActionListener {
 
 	Random random = new Random();
 
-	
 	JPanel contentPane;
-	
-	JTextField txtNumberOne, txtNumberTwo, txtNumberThree, txtNumberFour, txtNumberFive, 
-	txtNumberSix, txtNumberSeven, txtNumberEight, txtNumberNine, txtNumberTen, txtNumberEleven;
-	
-	JLabel lblNumberOne, lblNumberTwo, lblEndeKalenderwoche, lblWieVielePersonen, lblWelcherBungalowSoll, lblKalenderjahr;
-	
-	JButton btnBuchen, btnAnzeigen, btnBungalowListe;
 
-	
+	JTextField txtNumberOne, txtNumberTwo, txtNumberThree, txtNumberFour, txtNumberFive, txtNumberSix, txtNumberSeven,
+			txtNumberEight, txtNumberNine, txtNumberTen, txtNumberEleven;
+
+	JLabel lblNumberOne, lblNumberTwo, lblEndeKalenderwoche, lblWieVielePersonen, lblWelcherBungalowSoll,
+			lblKalenderjahr;
+
+	JButton btnBuchen, btnAnzeigen, btnBungalowListe;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -80,8 +77,8 @@ public class bungalow extends JFrame implements ActionListener {
 		lblEndeKalenderwoche.setForeground(Color.WHITE);
 		lblEndeKalenderwoche.setBounds(27, 104, 180, 25);
 		contentPane.add(lblEndeKalenderwoche);
-		
-		lblKalenderjahr = new JLabel("Jahr AuÃŸwÃ¤hlen:");
+
+		lblKalenderjahr = new JLabel("Jahr ausw\u00E4hlen:");
 		lblKalenderjahr.setForeground(Color.WHITE);
 		lblKalenderjahr.setBounds(27, 136, 180, 25);
 		contentPane.add(lblKalenderjahr);
@@ -164,7 +161,7 @@ public class bungalow extends JFrame implements ActionListener {
 		txtNumberNine.setBackground(Color.LIGHT_GRAY);
 		txtNumberNine.setBounds(563, 265, 190, 20);
 		contentPane.add(txtNumberNine);
-		
+
 		txtNumberTen = new JTextField();
 		txtNumberTen.setHorizontalAlignment(SwingConstants.CENTER);
 		txtNumberTen.setForeground(new Color(255, 255, 255));
@@ -172,7 +169,7 @@ public class bungalow extends JFrame implements ActionListener {
 		txtNumberTen.setBounds(220, 138, 118, 20);
 		contentPane.add(txtNumberTen);
 		txtNumberTen.setColumns(10);
-		
+
 		txtNumberEleven = new JTextField();
 		txtNumberEleven.setHorizontalAlignment(SwingConstants.CENTER);
 		txtNumberEleven.setForeground(Color.BLACK);
@@ -216,37 +213,43 @@ public class bungalow extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
-		if (e.getSource() == btnBungalowListe) {
-			ListeMaxPersonen liste = new ListeMaxPersonen();
-		}
-
+		ListeMaxPersonen liste = new ListeMaxPersonen();
+		
 		if (e.getSource() == btnBuchen || e.getSource() == btnAnzeigen) {
 			if (Integer.parseInt(txtNumberTwo.getText()) < 1 && Integer.parseInt(txtNumberTwo.getText()) > 52) {
 				txtNumberSix.setText("Fehler!");
 				txtNumberSeven.setText("Endwoche");
 				txtNumberEight.setText("ist nicht im");
-				txtNumberNine.setText("mÃ¶glichen Rahmen");
+				txtNumberEleven.setText("möglichen Rahmen");
+				txtNumberNine.setText("!");
 				btnAnzeigen.setVisible(false);
-			
-			}else if (Integer.parseInt(txtNumberThree.getText()) < 1 && Integer.parseInt(txtNumberThree.getText()) > 52) {
+
+			} else if (Integer.parseInt(txtNumberThree.getText()) < 1
+					&& Integer.parseInt(txtNumberThree.getText()) > 52) {
 				txtNumberSix.setText("Fehler!");
 				txtNumberSeven.setText("AnfangsWoche");
 				txtNumberEight.setText("ist nicht im");
-				txtNumberNine.setText("mÃ¶glichen Rahmen");
+				txtNumberEleven.setText("möglichen Rahmen");
+				txtNumberNine.setText("!");
 				btnAnzeigen.setVisible(false);
-				
-			}else if (Integer.parseInt(txtNumberTwo.getText()) >= Integer.parseInt(txtNumberThree.getText())) {
+
+			} else if (Integer.parseInt(txtNumberTwo.getText()) >= Integer.parseInt(txtNumberThree.getText())) {
 				txtNumberSix.setText("Fehler!");
 				txtNumberSeven.setText("Endwoche");
-				txtNumberEight.setText("muss spÃ¤ter als");
-				txtNumberNine.setText("Anfangswoche sein");
-				btnAnzeigen.setVisible(false);	
-				
+				txtNumberEight.setText("muss später als");
+				txtNumberEleven.setText("Anfangswoche sein");
+				txtNumberNine.setText("!");
+				btnAnzeigen.setVisible(false);
+			}else if (Integer.parseInt(txtNumberFour.getText()) > liste.bungPersonen[Integer.parseInt(txtNumberOne.getText())] ) {
+				txtNumberSix.setText("Fehler!");
+				txtNumberSeven.setText("Personenanzahl");
+				txtNumberEight.setText("wurde");
+				txtNumberEleven.setText("überschritten");
+				txtNumberNine.setText("!");
+				btnAnzeigen.setVisible(false);
 			} else {
 				btnAnzeigen.setVisible(true);
-			}	
-				
+			}
 		}
 
 		if (e.getSource() == btnBuchen) {
