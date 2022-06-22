@@ -1,3 +1,4 @@
+// Benötigte Imports
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+
+// Initialisierung der Werte
 @SuppressWarnings("serial")
 public class bungalow extends JFrame implements ActionListener {
 
@@ -48,8 +51,11 @@ public class bungalow extends JFrame implements ActionListener {
 		});
 	}
 
+	
+	// GUI
 	bungalow() {
 
+		// Background
 		setBackground(new Color(0, 0, 0));
 		setForeground(new Color(255, 255, 255));
 		setTitle("Buchung");
@@ -62,6 +68,8 @@ public class bungalow extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		
+		// Labels erstellen und positionieren
 		lblNumberOne = new JLabel("Nummer des Bungalows(1-10):");
 		lblNumberOne.setForeground(Color.WHITE);
 		lblNumberOne.setBackground(Color.WHITE);
@@ -78,7 +86,7 @@ public class bungalow extends JFrame implements ActionListener {
 		lblEndeKalenderwoche.setBounds(27, 104, 180, 25);
 		contentPane.add(lblEndeKalenderwoche);
 
-		lblKalenderjahr = new JLabel("Jahr AuÃŸwÃ¤hlen:");
+		lblKalenderjahr = new JLabel("Jahr ausw\u00E4hlen:");
 		lblKalenderjahr.setForeground(Color.WHITE);
 		lblKalenderjahr.setBounds(27, 136, 180, 25);
 		contentPane.add(lblKalenderjahr);
@@ -88,6 +96,7 @@ public class bungalow extends JFrame implements ActionListener {
 		lblWieVielePersonen.setBounds(27, 170, 180, 25);
 		contentPane.add(lblWieVielePersonen);
 
+		// Eingabe Felder erstellen und positionieren
 		txtNumberOne = new JTextField();
 		txtNumberOne.setHorizontalAlignment(SwingConstants.CENTER);
 		txtNumberOne.setForeground(new Color(255, 255, 255));
@@ -179,7 +188,7 @@ public class bungalow extends JFrame implements ActionListener {
 		contentPane.add(txtNumberEleven);
 
 		lblWelcherBungalowSoll = new JLabel(
-				"<html><body><center> Welcher Bungalow soll <br>angezeigt werden?</center></body></html>");
+				"<html><body><center> Welcher Bungalow soll <br>angezeigt werden?</center></body></html>"); //Damit ein Umbruch im Text ist
 		lblWelcherBungalowSoll.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWelcherBungalowSoll.setForeground(Color.WHITE);
 		lblWelcherBungalowSoll.setBackground(Color.WHITE);
@@ -219,13 +228,13 @@ public class bungalow extends JFrame implements ActionListener {
 
 	}
 
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
-		
+		// Zusammenhang mit der Klasse "ListeMaxPersonen" erstellen
 		ListeMaxPersonen liste = new ListeMaxPersonen();
-		
 
+		// Keine Überbuchung
 		if (e.getSource() == btnBuchen || e.getSource() == btnAnzeigen) {
 			if (Buchungen[Integer.parseInt(txtNumberOne.getText())][1] >= 1) {
 				txtNumberSix.setText("Fehler!");
@@ -237,6 +246,7 @@ public class bungalow extends JFrame implements ActionListener {
 			}
 		}
 
+		// Werte speichern
 		if (e.getSource() == btnBuchen) {
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][0] = Integer.parseInt(txtNumberTwo.getText());
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][1] = Integer.parseInt(txtNumberThree.getText());
@@ -245,6 +255,7 @@ public class bungalow extends JFrame implements ActionListener {
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][4] = Integer.parseInt(txtNumberTen.getText());
 		}
 
+		// Stonierung
 		if (e.getSource() == btnStornieren) {
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][0] = 0;
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][1] = 0;
@@ -253,6 +264,7 @@ public class bungalow extends JFrame implements ActionListener {
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][4] = 0;
 		}
 
+		// Text ausgabe
 		if (e.getSource() == btnAnzeigen) {
 			txtNumberSix.setText("Anfangs Woche: " + Buchungen[Integer.parseInt(txtNumberFive.getText())][0]);
 			txtNumberSeven.setText("End Woche: " + Buchungen[Integer.parseInt(txtNumberFive.getText())][1]);
@@ -261,15 +273,19 @@ public class bungalow extends JFrame implements ActionListener {
 			txtNumberEleven.setText("Jahr: " + Buchungen[Integer.parseInt(txtNumberFive.getText())][4]);
 		}
 
+		
+		// Fehler überprüfung
 		if (e.getSource() == btnBuchen || e.getSource() == btnAnzeigen) {
+			
+			// Falls Endwochen-bedingungen nicht eingehalten wurden
 			if (Integer.parseInt(txtNumberTwo.getText()) < 1 || Integer.parseInt(txtNumberTwo.getText()) > 52) {
-
 				txtNumberSix.setText("Fehler!");
 				txtNumberSeven.setText("Endwoche");
 				txtNumberEight.setText("ist nicht im");
 				txtNumberNine.setText("möglichen Rahmen");
 				btnAnzeigen.setVisible(false);
 
+				// Falls Anfangswochen-bedingungen nicht eingehalten wurden
 			} else if (Integer.parseInt(txtNumberThree.getText()) < 1
 					|| Integer.parseInt(txtNumberThree.getText()) > 52) {
 				txtNumberSix.setText("Fehler!");
@@ -278,13 +294,15 @@ public class bungalow extends JFrame implements ActionListener {
 				txtNumberNine.setText("möglichen Rahmen");
 				btnAnzeigen.setVisible(false);
 
-			} else if (Integer.parseInt(txtNumberTwo.getText()) >= Integer.parseInt(txtNumberThree.getText())) {
+				// Falls Endwoche früher als Anfangswoche ist
+			} else if (Integer.parseInt(txtNumberTwo.getText()) >= Integer.parseInt(txtNumberThree.getText()))  {
 				txtNumberSix.setText("Fehler!");
 				txtNumberSeven.setText("Endwoche");
-				txtNumberEight.setText("muss spÃ¤ter als");
+				txtNumberEight.setText("muss später als");
 				txtNumberNine.setText("Anfangswoche sein");
 				btnAnzeigen.setVisible(false);
 
+				// Falls zu viele Personen für ein Bungalow gebucht wurden
 			} else if (Integer.parseInt(txtNumberFour.getText()) > liste.bungPersonen[Integer.parseInt(txtNumberOne.getText())]) {
 				txtNumberSix.setText("Fehler!");
 				txtNumberSeven.setText("Personenanzahl");
@@ -295,9 +313,6 @@ public class bungalow extends JFrame implements ActionListener {
 			} else {
 				btnAnzeigen.setVisible(true);
 			}
-
 		}
-
 	}
-
 }
