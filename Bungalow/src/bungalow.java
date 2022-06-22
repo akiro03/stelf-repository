@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-//Test
+
 @SuppressWarnings("serial")
 public class bungalow extends JFrame implements ActionListener {
 
@@ -162,7 +162,7 @@ public class bungalow extends JFrame implements ActionListener {
 		txtNumberNine.setForeground(Color.BLACK);
 		txtNumberNine.setColumns(10);
 		txtNumberNine.setBackground(Color.LIGHT_GRAY);
-		txtNumberNine.setBounds(563, 234, 190, 20);
+		txtNumberNine.setBounds(563, 265, 190, 20);
 		contentPane.add(txtNumberNine);
 		
 		txtNumberTen = new JTextField();
@@ -178,11 +178,11 @@ public class bungalow extends JFrame implements ActionListener {
 		txtNumberEleven.setForeground(Color.BLACK);
 		txtNumberEleven.setColumns(10);
 		txtNumberEleven.setBackground(Color.LIGHT_GRAY);
-		txtNumberEleven.setBounds(563, 265, 190, 20);
+		txtNumberEleven.setBounds(563, 234, 190, 20);
 		contentPane.add(txtNumberEleven);
 
 		lblWelcherBungalowSoll = new JLabel(
-				"<html><body><center> Welcher Bungalow soll <br>angezeigt werden</center></body></html>");
+				"<html><body><center> Welcher Bungalow soll <br>angezeigt werden?</center></body></html>");
 		lblWelcherBungalowSoll.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWelcherBungalowSoll.setForeground(Color.WHITE);
 		lblWelcherBungalowSoll.setBackground(Color.WHITE);
