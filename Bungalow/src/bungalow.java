@@ -22,7 +22,7 @@ public class bungalow extends JFrame implements ActionListener {
 
 	public static final DecimalFormat df = new DecimalFormat("0.00");
 
-	public int[][] Buchungen = new int[10][4];
+	public int[][] Buchungen = new int[10][5];
 
 	Random random = new Random();
 
@@ -33,6 +33,7 @@ public class bungalow extends JFrame implements ActionListener {
 	JTextField txtNumberTwo;
 	JTextField txtNumberThree;
 	JLabel lblEndeKalenderwoche;
+	JLabel lblKalenderjahr;
 	JButton btnBuchen;
 	JLabel lblWieVielePersonen;
 	JTextField txtNumberFour;
@@ -43,6 +44,8 @@ public class bungalow extends JFrame implements ActionListener {
 	JTextField txtNumberSeven;
 	JTextField txtNumberEight;
 	JTextField txtNumberNine;
+	JTextField txtNumberTen;
+	JTextField txtNumberEleven;
 	JButton btnBungalowListe;
 
 	public static void main(String[] args) {
@@ -87,6 +90,11 @@ public class bungalow extends JFrame implements ActionListener {
 		lblEndeKalenderwoche.setForeground(Color.WHITE);
 		lblEndeKalenderwoche.setBounds(27, 104, 180, 25);
 		contentPane.add(lblEndeKalenderwoche);
+		
+		lblKalenderjahr = new JLabel("Jahr Auﬂw‰hlen");
+		lblKalenderjahr.setForeground(Color.WHITE);
+		lblKalenderjahr.setBounds(27, 173, 180, 25);
+		contentPane.add(lblKalenderjahr);
 
 		lblWieVielePersonen = new JLabel("Wie viele Personen:");
 		lblWieVielePersonen.setForeground(Color.WHITE);
@@ -166,6 +174,23 @@ public class bungalow extends JFrame implements ActionListener {
 		txtNumberNine.setBackground(Color.LIGHT_GRAY);
 		txtNumberNine.setBounds(563, 234, 190, 20);
 		contentPane.add(txtNumberNine);
+		
+		txtNumberTen = new JTextField();
+		txtNumberTen.setHorizontalAlignment(SwingConstants.CENTER);
+		txtNumberTen.setForeground(new Color(255, 255, 255));
+		txtNumberTen.setBackground(Color.DARK_GRAY);
+		txtNumberTen.setBounds(220, 177, 118, 20);
+		contentPane.add(txtNumberTen);
+		txtNumberTen.setColumns(10);
+		
+		txtNumberEleven = new JTextField();
+		txtNumberEleven.setHorizontalAlignment(SwingConstants.CENTER);
+		txtNumberEleven.setForeground(Color.BLACK);
+		txtNumberEleven.setColumns(10);
+		txtNumberEleven.setBackground(Color.LIGHT_GRAY);
+		txtNumberEleven.setBounds(563, 265, 190, 20);
+		contentPane.add(txtNumberEleven);
+
 
 		lblWelcherBungalowSoll = new JLabel(
 				"<html><body><center> Welcher Bungalow soll <br>angezeigt werden</center></body></html>");
@@ -187,7 +212,7 @@ public class bungalow extends JFrame implements ActionListener {
 		btnBuchen.setForeground(Color.BLACK);
 		btnBuchen.addActionListener(this);
 		btnBuchen.setBackground(Color.CYAN);
-		btnBuchen.setBounds(110, 190, 110, 25);
+		btnBuchen.setBounds(110, 220, 110, 25);
 		contentPane.add(btnBuchen);
 		btnBuchen.setFocusable(false);
 
@@ -224,12 +249,14 @@ public class bungalow extends JFrame implements ActionListener {
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][1] = Integer.parseInt(txtNumberThree.getText());
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][2] = Integer.parseInt(txtNumberFour.getText());
 			Buchungen[Integer.parseInt(txtNumberOne.getText())][3] = random.nextInt(9999);
+			Buchungen[Integer.parseInt(txtNumberOne.getText())][4] = Integer.parseInt(txtNumberTen.getText());
 		}
 
 		if (e.getSource() == btnAnzeigen) {
 			txtNumberSix.setText("Anfangs Woche: " + Buchungen[Integer.parseInt(txtNumberFive.getText())][0]);
 			txtNumberSeven.setText("End Woche: " + Buchungen[Integer.parseInt(txtNumberFive.getText())][1]);
 			txtNumberEight.setText("Anzahl Personen: " + Buchungen[Integer.parseInt(txtNumberFive.getText())][2]);
+			txtNumberEleven.setText("Jahr: " + Buchungen[Integer.parseInt(txtNumberFive.getText())][4]);
 			txtNumberNine.setText("Kundennummer: " + Buchungen[Integer.parseInt(txtNumberFive.getText())][3]);
 		}
 	}
